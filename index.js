@@ -1,78 +1,75 @@
-let playGame = confirm("Shall we play rock, paper, scissors?");
 
-// If player chose ok then play game, else give alert
-if (playGame)
+//   initializeGame();
+
+function initializeGame()
 {
-
-    // get player input
-    let playerChoice = prompt("Choose rock, paper or scissor");
-
-
-    //Make sure that the input has no extra spaces and all at lowercase
-
-    playerChoice.trim().toLowerCase();
+    confirm("Shall we play rock, paper, scissors?") ? GetPlayerChoice() : alert("Ok, Maybe Next Time!");
+}
 
 
-    // if player input did not chose rock, paper or scissor then end game else continue
+// GLOBAL VARIABLES
+let playerChoice;
+let computerChoice;
+
+function GetPlayerChoice()
+{
+    playerChoice = prompt("Choose rock, paper scissor");
+    playerChoice = playerChoice.trim().toLowerCase();
+
     if (playerChoice === "rock" ||
         playerChoice === "paper" ||
         playerChoice === "scissor"
     )
     {
-        // Chose random number from 1 to 3
-        let computerChoice = Math.floor(Math.random() * 3 + 1);
+        GetComputerChoice();
 
-        // change computer choice from number to string
-        switch (computerChoice)
-        {
-            case 1:
-                computerChoice = "rock";
-                break;
-
-            case 2:
-                computerChoice = "paper";
-                break
-
-            default:
-                computerChoice = "scissor";
-        }
-
-
-
-
-        // Compare playerChoice and computerChoice
-        let result = playerChoice === computerChoice ? "Tie game" :
-            playerChoice === "rock" && computerChoice === "paper" ? "Computer Wins" :
-                playerChoice === "paper" && computerChoice === "scissor" ? "Computer Wins" :
-                    playerChoice === "scissor" && computerChoice === "rock" ? "Computer Wins" :
-                        "Player Wins";
-
-
-        // Display output
-        alert("Player Chose:           " + playerChoice +
-            "\nComputer Chose:    " + computerChoice +
-            "\nResults:                    " + result);
-
-
-        // Ask for confirmation if player want to play again
-        let playAgain = confirm("Play Again?");
-
-        if (playAgain)
-        {
-            document.location.reload();
-        }
-        else
-        {
-            alert("Ok, Let's play next time!  :D");
-        }
     }
     else
     {
-        alert("I guess you changed your mind. Let's play next time!");
+        alert("I guess you changed your mind, Let's play next time!");
     }
 
+    return playerChoice;
 }
-else
+function GetComputerChoice()
 {
-    alert("Ok, Maybe next time!");
+    let choices = ["rock", "paper", "scissor"];
+
+    computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    CompareChoices();
 }
+
+function CompareChoices()
+{
+    // Compare playerChoice and computerChoice
+    let result = playerChoice === computerChoice ? "Tie game" :
+        playerChoice === "rock" && computerChoice === "paper" ? "Computer Wins" :
+            playerChoice === "paper" && computerChoice === "scissor" ? "Computer Wins" :
+                playerChoice === "scissor" && computerChoice === "rock" ? "Computer Wins" :
+                    "Player Wins";
+
+
+    // Display output
+    alert("Player Chose:           " + playerChoice +
+        "\nComputer Chose:    " + computerChoice +
+        "\nResults:                    " + result);
+
+    PlayAgain();
+}
+
+function PlayAgain()
+{
+    // Ask for confirmation if player want to play again
+    let playAgain = confirm("Play Again?");
+
+    if (playAgain)
+    {
+        document.location.reload();
+    }
+    else
+    {
+        alert("Ok, Let's play next time!  :D");
+    }
+}
+initializeGame();
