@@ -5,21 +5,32 @@
     box-sizing: border-box;
 }
 
+:root
+{
+    --BackgroundColor: blue;
+}
+
 body
 {
-    min-height: 100vh;
+    height: 100vh;
+    background-image: radial-gradient(rgb(37, 37, 179), rgb(23, 23, 121), rgb(1, 1, 78));
 }
 
 header h1
 {
-    background-color: blue;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 2rem;
+    color: #fbfcf6;
 }
 
 header .score
 {
-    background-color: rebeccapurple;
+    width: 50%;
+    margin: auto;
+
+    border: 1px solid #fbfcf6;
+    color: #fbfcf6;
+
     padding: 1rem;
     text-align: center;
 }
@@ -31,12 +42,11 @@ main .choices-container
     justify-content: space-around;
     align-items: center;
 
-    background-color: darkblue;
 }
 
 main .choice
 {
-    background-color: white;
+    background-color: #fbfcf6;
     padding: 0.5rem;
     border-radius: 50%;
     width: 8rem;
@@ -50,17 +60,17 @@ main .choice
 
 main .choice:first-child
 {
-    border: 5px solid green;
+    border: .8rem solid green;
 }
 
 main .choice:nth-child(2)
 {
-    border: 5px solid yellow;
+    border: .8rem solid yellow;
 }
 
 main .choice:last-child
 {
-    border: 5px solid red;
+    border: .8rem solid red;
 }
 
 main .choice i
